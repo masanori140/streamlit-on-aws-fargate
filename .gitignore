@@ -1,0 +1,30 @@
+# python
+__pycache__/
+
+# .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# terraform.tfvars
+**/terraform.tfvars
+
+# terraform.lock hcl
+.terraform.lock.hcl
+
+# vscode
+*.vscode
+*.code-workspace
+
+# lambda function
+**/output/*.zip
+
+# terragrunt
+**/backend.tf
+**/provider.tf
+.terragrunt-cache
+
+# mac
+.DS_Store

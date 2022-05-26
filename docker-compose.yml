@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  streamlit:
+    build:
+      context: streamlit
+      dockerfile: Dockerfile
+    command: poetry run streamlit run /app/app.py 
+    container_name: streamlit
+    ports:
+      - '80:80'
+    tty: true
+    stdin_open: true
