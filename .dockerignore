@@ -1,0 +1,13 @@
+# Git
+.gitignore
+
+# Docker
+Dockerfile
+docker-compose.yml
+
+# Python
+.venv/
+**/__pycache__/
+
+# VSCode
+.vscode/
