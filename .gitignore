@@ -15,7 +15,6 @@ __pycache__/
 .terraform.lock.hcl
 
 # vscode
-*.vscode
 *.code-workspace
 
 # lambda function
