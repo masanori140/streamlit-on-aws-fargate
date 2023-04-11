@@ -18,12 +18,12 @@ module "public_subnet" {
     {
       availability_zone = data.aws_availability_zones.this.names[0]
       cidr_block        = "10.0.0.0/24"
-      name              = "${var.tags.alias}-${var.tags.env}-pub-${data.aws_availability_zones.this.names[0]}",
+      name              = "${var.tags.service}-${var.tags.env}-pub-${data.aws_availability_zones.this.names[0]}",
     },
     {
       availability_zone = data.aws_availability_zones.this.names[1]
       cidr_block        = "10.0.1.0/24"
-      name              = "${var.tags.alias}-${var.tags.env}-pub-${data.aws_availability_zones.this.names[1]}",
+      name              = "${var.tags.service}-${var.tags.env}-pub-${data.aws_availability_zones.this.names[1]}",
     },
   ]
   tags   = var.tags
@@ -36,12 +36,12 @@ module "private_subnet" {
     {
       availability_zone = data.aws_availability_zones.this.names[0]
       cidr_block        = "10.0.10.0/24"
-      name              = "${var.tags.alias}-${var.tags.env}-pri-${data.aws_availability_zones.this.names[0]}",
+      name              = "${var.tags.service}-${var.tags.env}-pri-${data.aws_availability_zones.this.names[0]}",
     },
     {
       availability_zone = data.aws_availability_zones.this.names[1]
       cidr_block        = "10.0.11.0/24"
-      name              = "${var.tags.alias}-${var.tags.env}-pri-${data.aws_availability_zones.this.names[1]}",
+      name              = "${var.tags.service}-${var.tags.env}-pri-${data.aws_availability_zones.this.names[1]}",
     },
   ]
   tags   = var.tags
@@ -52,11 +52,11 @@ module "nat_gateway" {
   source = "../../resources/nat_gateway"
   nat_gateways = [
     {
-      name      = "${var.tags.alias}-${var.tags.env}-ngw-${data.aws_availability_zones.this.names[0]}"
+      name      = "${var.tags.service}-${var.tags.env}-ngw-${data.aws_availability_zones.this.names[0]}"
       subnet_id = module.public_subnet.subnet.0.id
     },
     {
-      name      = "${var.tags.alias}-${var.tags.env}-ngw-${data.aws_availability_zones.this.names[1]}"
+      name      = "${var.tags.service}-${var.tags.env}-ngw-${data.aws_availability_zones.this.names[1]}"
       subnet_id = module.public_subnet.subnet.1.id
     },
   ]
@@ -65,7 +65,7 @@ module "nat_gateway" {
 
 module "public_route_table" {
   source           = "../../resources/route_table"
-  route_table_name = "${var.tags.alias}-${var.tags.env}-public"
+  route_table_name = "${var.tags.service}-${var.tags.env}-public"
   subnet_ids       = module.public_subnet.subnet.*.id
   tags             = var.tags
   vpc_id           = module.vpc.vpc.id
@@ -79,7 +79,7 @@ module "public_route_table" {
 
 module "private_route_table_1a" {
   source           = "../../resources/route_table"
-  route_table_name = "${var.tags.alias}-${var.tags.env}-pri-${data.aws_availability_zones.this.names[0]}"
+  route_table_name = "${var.tags.service}-${var.tags.env}-pri-${data.aws_availability_zones.this.names[0]}"
   subnet_ids       = [module.private_subnet.subnet.0.id]
   tags             = var.tags
   vpc_id           = module.vpc.vpc.id
@@ -93,7 +93,7 @@ module "private_route_table_1a" {
 
 module "private_route_table_1c" {
   source           = "../../resources/route_table"
-  route_table_name = "${var.tags.alias}-${var.tags.env}-pri-${data.aws_availability_zones.this.names[1]}"
+  route_table_name = "${var.tags.service}-${var.tags.env}-pri-${data.aws_availability_zones.this.names[1]}"
   subnet_ids       = [module.private_subnet.subnet.1.id]
   tags             = var.tags
   vpc_id           = module.vpc.vpc.id
