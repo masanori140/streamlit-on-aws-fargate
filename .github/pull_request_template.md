@@ -1,11 +1,31 @@
-## 対応課題 ##
+### Summary ###
 
-- [xxxx](https://example.com)
+<!-- Describe the purpose of the changes and, if applicable, link to any related issues. -->
 
-## 対応内容 ##
+### Changes ###
 
-- xxxx
+<!-- List the changes in bullet points. -->
 
-## 補足 ##
+1.
+2.
+3.
 
-- xxxx
+### Impact ###
+
+<!-- Describe the potential impact of these changes on other areas or features. -->
+
+### Requirements ###
+
+<!-- Describe any necessary environment variables, dependencies, or database updates for this change. -->
+
+### Testing Procedure ###
+
+<!-- Explain how you tested these changes. -->
+
+1.
+2.
+3.
+
+### Additional Information ###
+
+<!-- Include any notes for the reviewer or relevant links, if applicable. -->
