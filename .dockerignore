@@ -1,13 +1,16 @@
-# Git
-.gitignore
-
 # Docker
 Dockerfile
 docker-compose.yml
 
+# Github
+.gitignore
+
 # Python
 .venv/
 **/__pycache__/
+
+# Terraform
+.terraform-version
 
 # VSCode
 .vscode/
