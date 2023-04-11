@@ -4,13 +4,13 @@
 
 | Name      | Version  |
 |-----------|----------|
-| terraform | >= 1.3.0 |
+| terraform | >= 1.4.0 |
 
 ## Providers
 
 | Name | Version   |
 |------|-----------|
-| aws  | ~> 4.57.0 |
+| aws  | ~> 4.62.0 |
 
 ## Modules
 
