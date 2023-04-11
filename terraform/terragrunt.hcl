@@ -1,19 +1,15 @@
-# --------------------------------------------------------------------------------
-# ローカル変数
-# --------------------------------------------------------------------------------
+# local variables
 
 locals {
-  aws_account_id   = "123456789012"
-  aws_region_id    = "ap-northeast-1"
-  service          = "example"
   environment_vars = read_terragrunt_config(find_in_parent_folders("env.hcl"))
+  aws_account_id   = local.environment_vars.locals.aws_account_id
+  aws_region_id    = local.environment_vars.locals.aws_region_id
   env              = local.environment_vars.locals.env
   hostzone         = local.environment_vars.locals.hostzone
+  service          = local.environment_vars.locals.service
 }
 
-# --------------------------------------------------------------------------------
-# provider.tf テンプレート
-# --------------------------------------------------------------------------------
+# provider.tf template
 
 generate "provider" {
   path      = "provider.tf"
@@ -23,18 +19,10 @@ provider "aws" {
   allowed_account_ids = ["${local.aws_account_id}"]
   region              = "${local.aws_region_id}"
 }
-
-provider "aws" {
-  allowed_account_ids = ["${local.aws_account_id}"]
-  region              = "us-east-1"
-  alias               = "us-east-1"
-}
 EOF
 }
 
-# --------------------------------------------------------------------------------
-# backend.tf テンプレート
-# --------------------------------------------------------------------------------
+# backend.tf template
 
 remote_state {
   backend = "s3"
@@ -50,9 +38,7 @@ remote_state {
   }
 }
 
-# --------------------------------------------------------------------------------
-# グローバル変数
-# --------------------------------------------------------------------------------
+# global variables
 
 inputs = {
   account = {
