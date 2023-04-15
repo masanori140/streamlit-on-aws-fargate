@@ -1,39 +1,24 @@
-# --------------------------------------------------------------------------------
-# 属性定義
-# --------------------------------------------------------------------------------
-
-variable "account" {
-  type = map(string)
+variable "region" {
+  description = "AWS Region ID."
+  type        = map(string)
 }
 
-variable "region" {
-  type = map(string)
+variable "security_groups" {
+  description = "Security groups to attach to the ECS service."
+  type        = list(string)
+}
+
+variable "subnets" {
+  description = "Subnets to attach to the ECS service."
+  type        = list(string)
 }
 
 variable "tags" {
-  type = map(string)
+  description = "A map of tags to assign to the resource."
+  type        = map(string)
 }
 
-# --------------------------------------------------------------------------------
-# 属性定義（vpcモジュール）
-# --------------------------------------------------------------------------------
-
-variable "vpc_id" {
-  type = string
-}
-
-variable "subnet_ids" {
-  type = list(string)
-}
-
-# --------------------------------------------------------------------------------
-# 属性定義（albモジュール）
-# --------------------------------------------------------------------------------
-
-variable "alb_target_group_arn" {
-  type = string
-}
-
-variable "security_group_id" {
-  type = string
+variable "target_group_arn" {
+  description = "Target group ARN to attach to the ECS service."
+  type        = string
 }

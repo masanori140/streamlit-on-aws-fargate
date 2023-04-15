@@ -1,13 +1,13 @@
 [
     {
-        "name": "${SERVICE}-${ENV}-streamlit-app",
+        "name": "streamlit",
         "image": "${REPOSITORY_URL}:latest",
         "cpu": 0,
-        "essential": true,      
+        "essential": true,
         "logConfiguration": {
             "logDriver": "awslogs",
             "options": {
-                "awslogs-group": "/aws/ecs/${SERVICE}-${ENV}-streamlit-app",
+                "awslogs-group": "/aws/ecs/${SERVICE}-${ENV}-streamlit",
                 "awslogs-region": "${REGION}",
                 "awslogs-create-group": "true",
                 "awslogs-stream-prefix": "ecs"
