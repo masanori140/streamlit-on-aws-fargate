@@ -1,39 +1,19 @@
-# --------------------------------------------------------------------------------
-# Terragrunt terraform ブロック
-# @see https://terragrunt.gruntwork.io/docs/reference/config-blocks-and-attributes/#terraform
-# --------------------------------------------------------------------------------
+# Terragrunt terraform
+# https://terragrunt.gruntwork.io/docs/reference/config-blocks-and-attributes/#terraform
 
 terraform {
-  source = "../../../modules/ecs"
+  source = "../../..//modules/ecs"
 }
 
-# --------------------------------------------------------------------------------
-# Terragrunt include ブロック
-# @see https://terragrunt.gruntwork.io/docs/reference/config-blocks-and-attributes/#include
-# --------------------------------------------------------------------------------
+# Terragrunt include
+# https://terragrunt.gruntwork.io/docs/reference/config-blocks-and-attributes/#include
 
 include {
   path = find_in_parent_folders()
 }
 
-# --------------------------------------------------------------------------------
-# Terragrunt dependency ブロック
-# @see https://terragrunt.gruntwork.io/docs/reference/config-blocks-and-attributes/#dependency
-# --------------------------------------------------------------------------------
-
-dependency "vpc" {
-  config_path = "../vpc"
-
-  mock_outputs = {
-    private_subnet_ids = ["subnet-1234567890abcdefg"]
-    vpc_id             = "vpc_1234567890abcdefg"
-  }
-}
-
-# --------------------------------------------------------------------------------
-# Terragrunt dependency ブロック
-# @see https://terragrunt.gruntwork.io/docs/reference/config-blocks-and-attributes/#dependency
-# --------------------------------------------------------------------------------
+# Terragrunt dependency
+# https://terragrunt.gruntwork.io/docs/reference/config-blocks-and-attributes/#dependency
 
 dependency "alb" {
   config_path = "../alb"
@@ -44,14 +24,35 @@ dependency "alb" {
   }
 }
 
-# --------------------------------------------------------------------------------
-# Terragrunt inputs ブロック
-# @see https://terragrunt.gruntwork.io/docs/features/inputs/#inputs
-# --------------------------------------------------------------------------------
+# Terragrunt dependency
+# https://terragrunt.gruntwork.io/docs/reference/config-blocks-and-attributes/#dependency
+
+dependency "security_group" {
+  config_path = "../security_group"
+
+  mock_outputs = {
+    ecs_security_group_id = "sg-1234567890abcdefg"
+  }
+}
+
+# Terragrunt dependency
+# https://terragrunt.gruntwork.io/docs/reference/config-blocks-and-attributes/#dependency
+
+dependency "vpc" {
+  config_path = "../vpc"
+
+  mock_outputs = {
+    private_subnet_ids = ["subnet-1234567890abcdefg"]
+    vpc_id             = "vpc_1234567890abcdefg"
+  }
+}
+
+# Terragrunt inputs
+# https://terragrunt.gruntwork.io/docs/features/inputs/#inputs
 
 inputs = {
-  subnet_ids           = dependency.vpc.outputs.private_subnet_ids
-  vpc_id               = dependency.vpc.outputs.vpc_id
-  alb_target_group_arn = dependency.alb.outputs.alb_target_group_arn
-  security_group_id    = dependency.alb.outputs.security_group_id
+  target_group_arn = dependency.alb.outputs.alb_target_group_arn
+  security_groups  = [dependency.security_group.outputs.ecs_security_group_id]
+  subnet_ids       = dependency.vpc.outputs.private_subnet_ids
+  vpc_id           = dependency.vpc.outputs.vpc_id
 }
