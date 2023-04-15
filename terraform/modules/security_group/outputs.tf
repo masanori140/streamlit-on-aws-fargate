@@ -5,5 +5,5 @@ output "alb_security_group_id" {
 
 output "ecs_security_group_id" {
   description = "ECS security group ID"
-  value       = module.api_sg.security_group.id
+  value       = module.ecs_sg.security_group.id
 }
