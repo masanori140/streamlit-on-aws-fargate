@@ -11,3 +11,17 @@ module "alb_record" {
   type    = "A"
   zone_id = data.aws_route53_zone.this.zone_id
 }
+
+module "cognito_record" {
+  source = "../../resources/route53"
+  alias = [
+    {
+      evaluate_target_health = false
+      name                   = module.cognito.cognito_user_pool_domain.cloudfront_distribution
+      zone_id                = module.cognito.cognito_user_pool_domain.cloudfront_distribution_zone_id
+    }
+  ]
+  name    = module.cognito.cognito_user_pool_domain.domain
+  type    = "A"
+  zone_id = data.aws_route53_zone.this.zone_id
+}

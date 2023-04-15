@@ -3,8 +3,13 @@ variable "account" {
   type        = map(string)
 }
 
-variable "certificate_arn" {
+variable "alb_acm_certificate_arn" {
   description = "ARN of the ACM certificate to use for the ALB."
+  type        = string
+}
+
+variable "cognito_acm_certificate_arn" {
+  description = "ARN of the ACM certificate to use for the Cognito User Pool Domain."
   type        = string
 }
 
@@ -26,21 +31,6 @@ variable "security_groups" {
 variable "subnets" {
   description = "A list of subnet IDs to attach to the ALB."
   type        = list(string)
-}
-
-variable "user_pool_arn" {
-  description = "ARN of the Cognito User Pool to use for authentication."
-  type        = string
-}
-
-variable "user_pool_client_id" {
-  description = "Client ID of the Cognito User Pool to use for authentication."
-  type        = string
-}
-
-variable "user_pool_domain" {
-  description = "Domain of the Cognito User Pool to use for authentication."
-  type        = string
 }
 
 variable "vpc_id" {

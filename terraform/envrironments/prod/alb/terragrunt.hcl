@@ -20,19 +20,7 @@ dependency "acm" {
 
   mock_outputs = {
     alb_acm_certificate_arn = "arn:aws:acm:us-east-1:123456789012:certificate/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-  }
-}
-
-# Terragrunt dependency
-# https://terragrunt.gruntwork.io/docs/reference/config-blocks-and-attributes/#dependency
-
-dependency "cognito" {
-  config_path = "../cognito"
-
-  mock_outputs = {
-    cognito_user_pool_arn = "sg-1234567890abcdefg"
-    cognito_user_pool_client_id = "sg-1234567890abcdefg"
-    cognito_user_pool_domain_domain = "sg-1234567890abcdefg"
+    cognito_acm_certificate_arn = "arn:aws:acm:us-east-1:123456789012:certificate/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
   }
 }
 
@@ -63,11 +51,9 @@ dependency "vpc" {
 # @see https://terragrunt.gruntwork.io/docs/features/inputs/#inputs
 
 inputs = {
-  certificate_arn     = dependency.acm.outputs.alb_acm_certificate_arn
-  user_pool_arn       = dependency.cognito.outputs.cognito_user_pool_arn
-  user_pool_client_id = dependency.cognito.outputs.cognito_user_pool_client_id
-  user_pool_domain    = dependency.cognito.outputs.cognito_user_pool_domain_domain
-  security_groups     = [dependency.security_group.outputs.alb_security_group_id]
-  subnets             = dependency.vpc.outputs.public_subnet_ids
-  vpc_id              = dependency.vpc.outputs.vpc_id
+  alb_acm_certificate_arn     = dependency.acm.outputs.alb_acm_certificate_arn
+  cognito_acm_certificate_arn = dependency.acm.outputs.cognito_acm_certificate_arn
+  security_groups             = [dependency.security_group.outputs.alb_security_group_id]
+  subnets                     = dependency.vpc.outputs.public_subnet_ids
+  vpc_id                      = dependency.vpc.outputs.vpc_id
 }
