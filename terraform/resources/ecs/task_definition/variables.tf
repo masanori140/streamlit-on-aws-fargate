@@ -42,6 +42,12 @@ variable "requires_compatibilities" {
   default     = ["FARGATE"]
 }
 
+variable "tags" {
+  description = "A mapping of tags to assign to the resource."
+  type        = map(string)
+  default     = {}
+}
+
 variable "task_role_arn" {
   description = "ARN of IAM role that allows your Amazon ECS container task to make calls to other AWS services."
   type        = string

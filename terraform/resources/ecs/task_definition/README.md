@@ -33,6 +33,7 @@ No modules.
 | <a name="input_network_mode"></a> [network\_mode](#input\_network\_mode) | Docker networking mode to use for the containers in the task. | `string` | `"awsvpc"` | no |
 | <a name="input_path"></a> [path](#input\_path) | Path to the task definition template. | `string` | `null` | no |
 | <a name="input_requires_compatibilities"></a> [requires\_compatibilities](#input\_requires\_compatibilities) | Set of launch types required by the task. Valid values are `EC2` and `FARGATE`. | `list(string)` | <pre>[<br>  "FARGATE"<br>]</pre> | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | A mapping of tags to assign to the resource. | `map(string)` | `{}` | no |
 | <a name="input_task_role_arn"></a> [task\_role\_arn](#input\_task\_role\_arn) | ARN of IAM role that allows your Amazon ECS container task to make calls to other AWS services. | `string` | `null` | no |
 | <a name="input_vars"></a> [vars](#input\_vars) | Variables to pass to the task definition template. | `map(string)` | `{}` | no |
 | <a name="input_volume"></a> [volume](#input\_volume) | Dynamic block for the volume. | `any` | `[]` | no |
