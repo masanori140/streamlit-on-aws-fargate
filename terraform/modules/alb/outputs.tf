@@ -1,11 +1,4 @@
-# --------------------------------------------------------------------------------
-# Application Load Balancer モジュール アウトプット定義
-# --------------------------------------------------------------------------------
-
-output "security_group_id" {
-  value = module.alb_sg.security_group.id
-}
-
 output "alb_target_group_arn" {
-  value = module.alb.alb_target_group.arn
+  description = "ARN of the ALB target group."
+  value       = module.target_group.lb_target_group.arn
 }
