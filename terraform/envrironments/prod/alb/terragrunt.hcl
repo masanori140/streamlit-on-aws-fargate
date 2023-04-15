@@ -19,7 +19,7 @@ dependency "acm" {
   config_path = "../acm"
 
   mock_outputs = {
-    alb_acm_certificate_arn = "sg-1234567890abcdefg"
+    alb_acm_certificate_arn = "arn:aws:acm:us-east-1:123456789012:certificate/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
   }
 }
 
