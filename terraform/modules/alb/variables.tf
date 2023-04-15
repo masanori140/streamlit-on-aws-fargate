@@ -7,6 +7,7 @@ variable "certificate_arn" {
   description = "ARN of the ACM certificate to use for the ALB."
   type        = string
 }
+
 variable "hostzone" {
   description = "A map of Route53 Hosted Zone to create the DNS record in."
   type        = map(string)
