@@ -17,11 +17,11 @@ module "cognito_record" {
   alias = [
     {
       evaluate_target_health = false
-      name                   = module.cognito.cognito_user_pool_domain.cloudfront_distribution
-      zone_id                = module.cognito.cognito_user_pool_domain.cloudfront_distribution_zone_id
+      name                   = module.user_pool_domain.cognito_user_pool_domain.cloudfront_distribution
+      zone_id                = module.user_pool_domain.cognito_user_pool_domain.cloudfront_distribution_zone_id
     }
   ]
-  name    = module.cognito.cognito_user_pool_domain.domain
+  name    = module.user_pool_domain.cognito_user_pool_domain.domain
   type    = "A"
   zone_id = data.aws_route53_zone.this.zone_id
 }

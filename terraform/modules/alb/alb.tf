@@ -37,9 +37,9 @@ module "alb_listener" {
       type = "authenticate-cognito"
       authenticate_cognito = [
         {
-          user_pool_arn       = module.cognito.cognito_user_pool.arn
-          user_pool_client_id = module.cognito.cognito_user_pool_client.id
-          user_pool_domain    = module.cognito.cognito_user_pool_domain.domain
+          user_pool_arn       = module.user_pool.cognito_user_pool.arn
+          user_pool_client_id = module.user_pool_client.cognito_user_pool_client.id
+          user_pool_domain    = module.user_pool_domain.cognito_user_pool_domain.domain
         }
       ]
     },
