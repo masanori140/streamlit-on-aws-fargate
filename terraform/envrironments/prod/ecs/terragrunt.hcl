@@ -19,8 +19,7 @@ dependency "alb" {
   config_path = "../alb"
 
   mock_outputs = {
-    alb_target_group_arn = "arn:aws:elasticloadbalancing:ap-northeast-1:123456789012:targetgroup/alb-target-group/1234567890abcdef"
-    security_group_id    = "sg-1234567890abcdefg"
+    alb_target_group_arn = "arn:aws:elasticloadbalancing:ap-northeast-1:123456789012:targetgroup/xxxxxxxxxxxxxxxx/xxxxxxxxxxxxxxxx"
   }
 }
 
@@ -31,7 +30,7 @@ dependency "security_group" {
   config_path = "../security_group"
 
   mock_outputs = {
-    ecs_security_group_id = "sg-1234567890abcdefg"
+    ecs_security_group_id = "sg-xxxxxxxxxxxxxxxxx"
   }
 }
 
@@ -42,8 +41,8 @@ dependency "vpc" {
   config_path = "../vpc"
 
   mock_outputs = {
-    private_subnet_ids = ["subnet-1234567890abcdefg"]
-    vpc_id             = "vpc_1234567890abcdefg"
+    private_subnet_ids = ["subnet-xxxxxxxxxxxxxxxxx"]
+    vpc_id             = "vpc-xxxxxxxxxxxxxxxxx"
   }
 }
 
@@ -53,6 +52,6 @@ dependency "vpc" {
 inputs = {
   target_group_arn = dependency.alb.outputs.alb_target_group_arn
   security_groups  = [dependency.security_group.outputs.ecs_security_group_id]
-  subnet_ids       = dependency.vpc.outputs.private_subnet_ids
+  subnets          = dependency.vpc.outputs.private_subnet_ids
   vpc_id           = dependency.vpc.outputs.vpc_id
 }
