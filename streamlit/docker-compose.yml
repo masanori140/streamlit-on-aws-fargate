@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  streamlit:
+    build:
+      target: development
+    container_name: streamlit
+    ports:
+      - 8501:8501
+    volumes:
+      - ./app:/app
+      - ./poetry.lock:/app/poetry.lock
+      - ./pyproject.toml:/app/pyproject.toml
+    command: poetry run streamlit run /app/app.py
