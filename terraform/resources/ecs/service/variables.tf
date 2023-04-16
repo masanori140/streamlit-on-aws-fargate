@@ -29,6 +29,12 @@ variable "name" {
   type        = string
 }
 
+variable "propagate_tags" {
+  description = "Specifies whether to propagate the tags from the task definition or the service to the tasks."
+  type        = string
+  default     = "TASK_DEFINITION"
+}
+
 variable "tags" {
   description = "A mapping of tags to assign to the resource."
   type        = map(string)
@@ -38,12 +44,6 @@ variable "tags" {
 variable "task_family" {
   description = "Name of the task definition."
   type        = string
-}
-
-variable "task_revision" {
-  description = "Revision of the task definition."
-  type        = number
-  default     = 0
 }
 
 ### Capacity Provider Strategy ###

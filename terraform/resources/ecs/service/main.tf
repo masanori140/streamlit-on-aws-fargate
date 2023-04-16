@@ -5,10 +5,11 @@ resource "aws_ecs_service" "this" {
   cluster                           = var.cluster
   desired_count                     = var.desired_count
   health_check_grace_period_seconds = var.health_check_grace_period_seconds
-  launch_type                       = var.launch_type
+  launch_type                       = var.capacity_provider_strategy == [] ? var.launch_type : null
   name                              = var.name
+  propagate_tags                    = var.propagate_tags
   tags                              = merge(var.tags, { "Name" = var.name })
-  task_definition                   = "${var.task_family}:${max(var.task_revision, data.aws_ecs_task_definition.this.revision)}"
+  task_definition                   = var.task_family
 
   dynamic "capacity_provider_strategy" {
     for_each = var.capacity_provider_strategy
@@ -54,11 +55,4 @@ resource "aws_ecs_service" "this" {
       task_definition,
     ]
   }
-}
-
-# Amazon ECS Task Definition Data Source
-# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ecs_task_definition
-
-data "aws_ecs_task_definition" "this" {
-  task_definition = aws_ecs_task_definition.this.family
 }
