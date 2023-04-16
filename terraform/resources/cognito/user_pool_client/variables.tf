@@ -61,7 +61,7 @@ variable "logout_urls" {
   default     = []
 }
 
-variable "user_pool_client_name" {
+variable "name" {
   description = "Name of the User Pool Client."
   type        = string
 }

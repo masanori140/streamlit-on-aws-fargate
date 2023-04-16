@@ -36,10 +36,10 @@ No modules.
 | <a name="input_generate_secret"></a> [generate\_secret](#input\_generate\_secret) | Should an application secret be generated. | `bool` | `false` | no |
 | <a name="input_id_token_validity"></a> [id\_token\_validity](#input\_id\_token\_validity) | Time limit, between 5 minutes and 1 day, after which the ID token is no longer valid and cannot be used. | `number` | `null` | no |
 | <a name="input_logout_urls"></a> [logout\_urls](#input\_logout\_urls) | List of allowed logout URLs for the identity providers. | `list(string)` | `[]` | no |
+| <a name="input_name"></a> [name](#input\_name) | Name of the User Pool Client. | `string` | n/a | yes |
 | <a name="input_read_attributes"></a> [read\_attributes](#input\_read\_attributes) | List of user pool attributes the application client can read from. | `list(string)` | `[]` | no |
 | <a name="input_refresh_token_validity"></a> [refresh\_token\_validity](#input\_refresh\_token\_validity) | Time limit, between 60 minutes and 10 years, after which the refresh token is no longer valid and cannot be used. | `number` | `null` | no |
 | <a name="input_supported_identity_providers"></a> [supported\_identity\_providers](#input\_supported\_identity\_providers) | List of provider names for the identity providers that are supported on this client. | `list(string)` | `[]` | no |
-| <a name="input_user_pool_client_name"></a> [user\_pool\_client\_name](#input\_user\_pool\_client\_name) | Name of the User Pool Client. | `string` | n/a | yes |
 | <a name="input_user_pool_id"></a> [user\_pool\_id](#input\_user\_pool\_id) | User pool ID. | `string` | n/a | yes |
 | <a name="input_write_attributes"></a> [write\_attributes](#input\_write\_attributes) | List of user pool attributes the application client can write to. | `list(string)` | `[]` | no |
 

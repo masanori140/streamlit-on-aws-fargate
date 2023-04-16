@@ -12,7 +12,7 @@ resource "aws_cognito_user_pool_client" "this" {
   generate_secret                      = var.generate_secret
   id_token_validity                    = var.id_token_validity
   logout_urls                          = var.logout_urls
-  name                                 = var.user_pool_client_name
+  name                                 = var.name
   read_attributes                      = var.read_attributes
   refresh_token_validity               = var.refresh_token_validity
   supported_identity_providers         = var.supported_identity_providers
