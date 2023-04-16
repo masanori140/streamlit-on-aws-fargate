@@ -11,6 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     env:
       LOG_LEVEL: INFO
+    permissions:
+      id-token: write
+      contents: read
+      pull-requests: write
 
     steps:
       - name: Checkout
