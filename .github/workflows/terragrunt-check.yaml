@@ -1,0 +1,63 @@
+name: Terragrunt check and plan
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [opened, reopened, synchronize]
+    branches: [main, develop]
+
+jobs:
+  check-and-plan:
+    runs-on: ubuntu-latest
+    env:
+      LOG_LEVEL: INFO
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1-node16
+        with:
+          role-to-assume: ${{ secrets.AWS_ASSUME_ROLE_ARN }}
+          aws-region: us-east-1
+
+      - name: Setup Terraform
+        id: setup-terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_wrapper: false
+          terraform_version: 1.4.4
+
+      - name: Install Terragrunt
+        run: |
+          TERRAGRUNT_VERSION=$(curl -s https://api.github.com/repos/gruntwork-io/terragrunt/releases/latest | jq -r .tag_name)
+          curl -sL -o terragrunt "https://github.com/gruntwork-io/terragrunt/releases/download/${TERRAGRUNT_VERSION}/terragrunt_linux_amd64"
+          sudo install -o root -g root -m 0755 terragrunt /usr/local/bin/
+
+      - name: Modify env.hcl
+        run: |
+          ACCOUNT=$(aws sts get-caller-identity --query Account --output text)
+          sed -i "s/123456789012/${ACCOUNT}/" env.hcl
+        working-directory: ./terraform/environments/prod
+
+      - name: Terraform Format
+        id: fmt
+        run: terraform fmt -check -recursive
+        working-directory: ./terraform
+
+      - name: Terragrunt Init
+        id: init
+        run: terragrunt run-all init --terragrunt-log-level $LOG_LEVEL --terragrunt-non-interactive
+        working-directory: ./terraform/environments/prod
+
+      - name: Terragrunt Validate
+        id: validate
+        run: terragrunt run-all validate --terragrunt-log-level $LOG_LEVEL
+        working-directory: ./terraform/environments/prod
+
+      - name: Terragrunt Plan
+        id: plan
+        run: terragrunt run-all plan --terragrunt-log-level $LOG_LEVEL
+        working-directory: ./terraform/environments/prod
+        continue-on-error: true
