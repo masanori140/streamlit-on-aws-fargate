@@ -11,7 +11,6 @@ tasks:
 
 clean:
 	find . -name ".terragrunt-cache" | xargs rm -rf
-	find . -name ".terraform.lock.hcl" | xargs rm -rf
 
 init:
 	terragrunt run-all init --terragrunt-log-level ${TF_LOG} --terragrunt-non-interactive
