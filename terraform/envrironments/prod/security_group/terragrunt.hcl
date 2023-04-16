@@ -19,7 +19,7 @@ dependency "vpc" {
   config_path = "../vpc"
 
   mock_outputs = {
-    vpc_id = "vpc_1234567890abcdefg"
+    vpc_id = "vpc-xxxxxxxxxxxxxxxxx"
   }
 }
 

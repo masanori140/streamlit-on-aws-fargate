@@ -31,7 +31,7 @@ dependency "security_group" {
   config_path = "../security_group"
 
   mock_outputs = {
-    alb_security_group_id = "sg-1234567890abcdefg"
+    alb_security_group_id = "sg-xxxxxxxxxxxxxxxxx"
   }
 }
 
@@ -42,8 +42,8 @@ dependency "vpc" {
   config_path = "../vpc"
 
   mock_outputs = {
-    public_subnet_ids = ["subnet-1234567890abcdefg"]
-    vpc_id            = "vpc_1234567890abcdefg"
+    public_subnet_ids = ["subnet-xxxxxxxxxxxxxxxxx"]
+    vpc_id            = "vpc-xxxxxxxxxxxxxxxxx"
   }
 }
 
