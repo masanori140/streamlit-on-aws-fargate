@@ -1,5 +1,6 @@
 ACCOUNT := 123456789012
 ENV := prod
+REGION := us-east-1
 SERVICE := myService
 
 .PHONY: tasks
@@ -15,7 +16,8 @@ black:
 	docker compose run --rm streamlit black .
 
 build:
-	time docker build -t ${ACCOUNT}.dkr.ecr.ap-northeast-1.amazonaws.com/${SERVICE}-${ENV}-streamlit:latest --target production .
+	time docker build --platform amd64 -t ${ACCOUNT}.dkr.ecr.${REGION}.amazonaws.com/${SERVICE}-${ENV}-streamlit:latest --target production .
+	# time docker build -t ${ACCOUNT}.dkr.ecr.${REGION}.amazonaws.com/${SERVICE}-${ENV}-streamlit:latest --target production .
 
 build-dev:
 	docker compose build
@@ -45,8 +47,8 @@ pflake8:
 	docker compose run --rm streamlit flake8 . --ignore=E501
 
 push:
-	aws ecr get-login-password --region ap-northeast-1 | docker login --username AWS --password-stdin ${ACCOUNT}.dkr.ecr.ap-northeast-1.amazonaws.com
-	time docker push ${ACCOUNT}.dkr.ecr.ap-northeast-1.amazonaws.com/${SERVICE}-${ENV}-streamlit:latest
+	aws ecr get-login-password --region ${REGION} | docker login --username AWS --password-stdin ${ACCOUNT}.dkr.ecr.${REGION}.amazonaws.com
+	time docker push ${ACCOUNT}.dkr.ecr.${REGION}.amazonaws.com/${SERVICE}-${ENV}-streamlit:latest
 
 up:
 	docker compose up -d
