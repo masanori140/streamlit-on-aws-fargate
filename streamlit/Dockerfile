@@ -36,11 +36,12 @@ RUN poetry install
 WORKDIR /app
 
 # For production build
-FROM build-base as production-base
+FROM build-base as production-build
 RUN poetry install --only main
 
 # For production
 FROM python-base as production
 COPY --from=production-build /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
+COPY --from=production-build /usr/local/bin/streamlit /usr/local/bin/streamlit
 COPY ./app /app
 WORKDIR /app
