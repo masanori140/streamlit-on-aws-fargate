@@ -39,7 +39,7 @@ module "ecs_service" {
   load_balancer = [
     {
       container_name   = "streamlit"
-      container_port   = 80
+      container_port   = 8501
       target_group_arn = var.target_group_arn
     }
   ]

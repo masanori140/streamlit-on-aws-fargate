@@ -6,10 +6,10 @@ module "ecs_sg" {
   ingress_rule = {
     0 = {
       description              = "ALB"
-      from_port                = 80
+      from_port                = 8501
       protocol                 = "tcp"
       source_security_group_id = module.alb_sg.security_group.id
-      to_port                  = 80
+      to_port                  = 8501
     }
   }
 }

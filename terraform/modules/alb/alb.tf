@@ -19,10 +19,10 @@ module "target_group" {
   health_check_interval = 60
   health_check_matcher  = "200"
   health_check_path     = "/"
-  health_check_port     = 80
+  health_check_port     = 8501
   health_check_timeout  = 10
   name                  = "${var.tags.service}-${var.tags.env}-target-group"
-  port                  = 80
+  port                  = 8501
   protocol              = "HTTP"
   tags                  = var.tags
   target_type           = "ip"
