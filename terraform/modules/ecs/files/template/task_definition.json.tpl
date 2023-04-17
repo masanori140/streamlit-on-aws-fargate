@@ -2,6 +2,9 @@
     {
         "name": "streamlit",
         "image": "${REPOSITORY_URL}:latest",
+        "command": [
+            "streamlit", "run", "app.py"
+        ],
         "cpu": 0,
         "essential": true,
         "logConfiguration": {
@@ -16,9 +19,9 @@
         "mountPoints": [],
         "portMappings": [
             {
-                "hostPort": 80,
+                "hostPort": 8501,
                 "protocol": "tcp",
-                "containerPort": 80
+                "containerPort": 8501
             }
         ],
         "environmentFiles": [],
