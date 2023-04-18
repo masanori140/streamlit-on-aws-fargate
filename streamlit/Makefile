@@ -1,5 +1,5 @@
 ACCOUNT := 123456789012
-ENV := prod
+ENV := myEnv
 REGION := us-east-1
 SERVICE := myService
 
