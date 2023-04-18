@@ -4,7 +4,7 @@ Streamlit アプリケーションを Amazon ECR にプッシュする手順を�
 
 ## ローカル開発環境を整える
 
-make コマンドを使って開発環境を整えます。コマンドは streamlit ディレクトリで実行します。
+make コマンドを使って開発環境を整えます。コマンドは streamlit ディレクトリで実行してください。
 
 ### ビルド
 
@@ -35,7 +35,9 @@ make exec
 
 http://localhost:8501 にアクセスして Streamlit アプリケーションが表示されることを確認します。
 
-[画像を貼る]
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/44653717/232705954-551392dc-deb5-40a9-90af-697e30cccc3a.png" />
+</div>
 
 ## Steamlit アプリを Amazon ECR にプッシュする
 
@@ -56,7 +58,7 @@ REGION := us-east-1
 SERVICE := myService
 ```
 
-3. `make build-prod` を実行して、Docker イメージを Amazon ECR にプッシュしてください。
+3. `make build-prod` コマンドを実行して、Docker イメージを Amazon ECR にプッシュしてください。
 
 ```bash
 make build-prod

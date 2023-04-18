@@ -74,7 +74,7 @@ terragrunt apply
 
 ## デプロイの確認
 
-1. [Streamlit アプリを ECR にプッシュする](streamlit/README.md)を参考に、Streamlit アプリを ECR にプッシュしてください。
+1. [Streamlit アプリを Amazon ECR にプッシュする](streamlit/README.md)を参考に、Streamlit アプリを ECR にプッシュしてください。
 
 2. デプロイ直後はタスク数が`0`です。以下のコマンドを実行してタスク数を`1`に変更してください。
 
