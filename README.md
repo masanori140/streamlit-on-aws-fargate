@@ -98,7 +98,9 @@ https://YOUR_DOMAIN_NAME
 
 5. 以下の画面が表示されれば正常です。
 
-[ここに画像を貼ってください]
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/44653717/232666730-0b3664f9-62d1-4bc8-90cf-aaa021da6ed3.png" />
+</div>
 
 ## 環境の削除
 
