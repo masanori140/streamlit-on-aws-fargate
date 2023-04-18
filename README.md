@@ -43,7 +43,7 @@ cd terraform/enviroments/prod
 
 3. 必要なバージョンの Terraform と Terragrunt をインストールしてください。
 
-4. [env.hcl](terraform/enviroments/prod/env.hcl) ファイルのローカル変数を、自分の環境に合わせて設定してください。
+4. [env.hcl](terraform/environments/prod/env.hcl) ファイルのローカル変数を、自分の環境に合わせて設定してください。
 
 ```hcl
 locals {
