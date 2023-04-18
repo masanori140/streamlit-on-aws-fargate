@@ -18,7 +18,9 @@
 
 ## アーキテクチャ図
 
-[ここにリンクを貼ってください]
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/44653717/232665940-8bf9a1d9-bb7f-43f1-b578-48a0efd6fc64.png" />
+</div>
 
 ## 前提条件
 
@@ -57,7 +59,7 @@ locals {
 
 ## デプロイ方法
 
-1. 以下のコマンドを実行して、環境を初期化します。
+1. 以下のコマンドを実行して、初期化します。
 
 ```bash
 terragrunt init
@@ -72,13 +74,13 @@ terragrunt apply
 
 ## デプロイの確認
 
-1. デプロイ直後はタスク数が`0`です。以下のコマンドを実行してタスク数を`1`に変更してください。
+1. [Streamlit アプリを ECR にプッシュする](streamlit/README.md)を参考に、Streamlit アプリを ECR にプッシュしてください。
+
+2. デプロイ直後はタスク数が`0`です。以下のコマンドを実行してタスク数を`1`に変更してください。
 
 ```bash
 aws ecs update-service --cluster YOUR_CLUSTER_NAME --service YOUR_SERVICE_NAME --desired-count 1
 ```
-
-2. [Streamlit アプリを ECR にプッシュする](streamlit/README.md)を参考に、Streamlit アプリを ECR にプッシュしてください。
 
 3. Streamlit アプリにログインするためのユーザーを作成してください。以下のコマンドを実行して、ユーザーを作成してください。
 
@@ -108,4 +110,5 @@ terragrunt destroy
 
 ## 注意事項
 
-本リポジトリのコードはデモ用途であり、本番環境での使用は推奨されません。本番環境での使用を検討する場合は、セキュリティやパフォーマンス等の面で適切な設定を行ってください。
+本リポジトリのコードはデモ用途であり、本番環境での使用は推奨されません。<br>
+本番環境での使用を検討する場合は、セキュリティやパフォーマンス等の面で適切な設定を行ってください。
