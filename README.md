@@ -1,6 +1,6 @@
 # Streamlit on AWS Fargate with Terragrunt
 
-このリポジトリでは、Streamlit を AWS Fargate 上で実行するための Terragrunt ソースコードです。<br>
+このリポジトリでは、Streamlit を AWS Fargate 上で実行するための Terragrunt ソースコードを提供します。<br>
 以下の手順に従って、環境を構築してください。
 
 ## Requirements
