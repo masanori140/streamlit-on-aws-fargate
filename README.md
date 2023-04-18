@@ -62,14 +62,14 @@ locals {
 1. 以下のコマンドを実行して、初期化します。
 
 ```bash
-terragrunt init
+terragrunt run-all init --terragrunt-non-interactive
 ```
 
 2. 以下のコマンドを実行して、インフラをデプロイします。
 
 ```bash
-terragrunt plan
-terragrunt apply
+terragrunt run-all plan
+terragrunt run-all apply
 ```
 
 ## デプロイの確認
