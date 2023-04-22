@@ -30,17 +30,17 @@
 
 ## 事前準備
 
-1. AWS CLI を使用して、AWS アカウントにログインしてください。
+1. AWS CLI を使用して、AWS アカウントにログインします。
 
 ```bash
 aws configure
 ```
 
-2. このリポジトリをローカル環境にクローンしてください。
+2. このリポジトリをクローンします。
 
 ```bash
 git clone https://github.com/maishio/streamlit-on-aws-fargate.git
-cd terraform/enviroments/prod
+cd streamlit-on-aws-fargate/terraform/enviroments/prod
 ```
 
 3. 必要なバージョンの Terraform と Terragrunt をインストールしてください。
